@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Le Nautic, Calvi : restaurant maritime sur le Quai Adolphe Landry</title>
+  <meta name="description" content="Le Nautic, restaurant face au port de Calvi : moules Cap Corse, gambas risotto, poissons grillés. Terrasse sur le Quai Adolphe Landry, 7j/7 midi et soir."/>
+  <meta name="theme-color" content="#F5F0E8"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital,wght@0,400;1,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#F5F0E8',
+            ink: '#0E2A44',
+            'ink-2': '#5A6B7C',
+            accent: '#C4622D',
+            line: '#E3D8C6',
+          },
+          fontFamily: {
+            display: ['"DM Serif Display"', 'serif'],
+            sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --bg: #F5F0E8;
+      --ink: #0E2A44;
+      --ink-2: #5A6B7C;
+      --accent: #C4622D;
+      --line: #E3D8C6;
+    }
+    html, body { background: var(--bg); color: var(--ink); }
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    .font-display { font-family: 'DM Serif Display', serif; letter-spacing: -0.015em; }
+    .eyebrow {
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+      font-weight: 500;
+    }
+    .h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.6rem, 7.5vw, 5.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.015em;
+    }
+    .h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.9rem, 4.2vw, 3rem);
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+    }
+    .h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+      line-height: 1.3;
+    }
+    .lede {
+      font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+      line-height: 1.55;
+      color: var(--ink);
+    }
+    .meta {
+      font-size: 0.88rem;
+      color: var(--ink-2);
+    }
+    /* Marquee */
+    .marquee-track {
+      animation: marquee-x 40s linear infinite;
+      will-change: transform;
+    }
+    .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+    @keyframes marquee-x {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    /* Reveal */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    /* Nav link underline grow-from-left */
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -4px;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 200ms cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+    .nav-link:hover::after, .nav-link:focus-visible::after { transform: scaleX(1); }
+    /* CTA */
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg);
+      transition: transform 180ms cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 220ms ease;
+      box-shadow: 0 10px 24px -14px rgba(196, 98, 45, 0.55);
+    }
+    .btn-primary:hover { box-shadow: 0 16px 36px -14px rgba(196, 98, 45, 0.55); }
+    .btn-primary:active { transform: scale(0.98); }
+    .btn-ghost {
+      border: 1px solid var(--ink);
+      color: var(--ink);
+      transition: background-color 180ms ease, color 180ms ease;
+    }
+    .btn-ghost:hover { background: var(--ink); color: var(--bg); }
+    /* Hero image frame */
+    .hero-frame {
+      border-top-left-radius: 24px;
+      overflow: hidden;
+    }
+    /* Signature cards */
+    .card-signature {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      transition: transform 220ms cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 220ms ease;
+    }
+    .card-signature:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px -12px rgba(14, 42, 68, 0.18);
+    }
+    /* Histoire framed image */
+    .histoire-frame {
+      border: 1px solid var(--line);
+      box-shadow: 12px 12px 0 0 rgba(14, 42, 68, 0.08);
+    }
+    /* Nav scrolled */
+    nav.scrolled {
+      background: rgba(245, 240, 232, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    /* Images fade-in */
+    img { transition: opacity 400ms ease; }
+    img.loaded { opacity: 1; }
+    /* Focus rings */
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+    /* Maps iframe */
+    .maps-iframe {
+      border: 0;
+      border-radius: 16px;
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+    }
+    /* Star SVG color */
+    .star { color: var(--accent); }
+    /* Selection */
+    ::selection { background: var(--accent); color: var(--bg); }
+    /* Hide scrollbar on marquee */
+    .marquee-wrap { overflow: hidden; }
+    /* Accessibility: reduce motion */
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-track { animation: none; }
+      [data-reveal] { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body class="bg-bg text-ink">
+
+  <!-- Nav -->
+  <nav id="top-nav" class="fixed top-0 inset-x-0 z-50 transition-colors">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 h-[60px] md:h-[72px] flex items-center justify-between">
+      <a href="#top" class="font-display text-xl md:text-2xl text-ink">Le Nautic</a>
+      <div class="hidden md:flex items-center gap-8 text-[0.95rem] text-ink">
+        <a href="#histoire" class="nav-link">Maison</a>
+        <a href="#signature" class="nav-link">Carte</a>
+        <a href="#galerie" class="nav-link">Galerie</a>
+        <a href="#infos" class="nav-link">Trouver</a>
+      </div>
+      <a href="tel:+33495312165" class="btn-ghost inline-flex items-center px-4 py-2 text-sm font-medium rounded-full">Réserver</a>
+    </div>
+  </nav>
+
+  <main id="top" class="pt-[60px] md:pt-[72px]">
+
+    <!-- 1. Hero -->
+    <section id="hero" class="relative border-b border-line">
+      <div class="max-w-7xl mx-auto px-5 md:px-8 py-12 md:py-20 grid grid-cols-1 lg:grid-cols-[58fr_42fr] gap-10 lg:gap-14 items-center">
+        <div class="order-2 lg:order-1">
+          <p class="eyebrow mb-6" data-reveal>Restaurant maritime, Calvi</p>
+          <h1 class="h1 text-ink mb-6" data-reveal>
+            Face au port, <span class="italic">depuis le quai.</span>
+          </h1>
+          <p class="lede max-w-xl mb-8 text-ink" data-reveal>
+            Sur le Quai Adolphe Landry, Le Nautic sert midi et soir une cuisine maritime généreuse : moules Cap Corse, gambas risotto, poissons grillés. Vue sur les bateaux, citadelle génoise en arrière-plan, accueil attentionné 7j/7.
+          </p>
+          <div class="flex flex-wrap items-center gap-4" data-reveal>
+            <a href="tel:+33495312165" class="btn-primary inline-flex items-center px-6 py-3 rounded-full text-[0.95rem] font-medium">
+              Réserver une table
+            </a>
+            <a href="#signature" class="btn-ghost inline-flex items-center px-6 py-3 rounded-full text-[0.95rem] font-medium">
+              Voir la carte
+            </a>
+          </div>
+          <div class="mt-10 flex items-center gap-6 meta" data-reveal>
+            <div class="flex items-center gap-2">
+              <svg class="star" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7.3L12 17.8 5.7 21.5l1.7-7.3L2 9.5l7.1-.6L12 2z"/></svg>
+              <span><strong class="text-ink">4.3</strong> sur 1042 avis Google</span>
+            </div>
+            <span class="hidden sm:inline">Ouvert 7j/7</span>
+          </div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <div class="hero-frame aspect-[4/5] lg:aspect-[3/4] bg-line">
+            <img
+              id="hero-image"
+              src="./assets/images/terrasse-le-nautic-tripadvisor.jpg"
+              alt="Le Nautic, terrasse ouverte sur le port de Calvi"
+              loading="eager"
+              fetchpriority="high"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Marquee -->
+    <section id="marquee" class="bg-ink text-bg py-5">
+      <div class="marquee-wrap">
+        <div class="marquee-track flex whitespace-nowrap">
+          <div class="flex items-center gap-10 pr-10 font-display text-[1.4rem] md:text-[1.6rem]">
+            <span>Quai Adolphe Landry</span>
+            <span class="text-accent" aria-hidden="true">&#10023;</span>
+            <span>7j/7 midi et soir</span>
+            <span class="text-accent" aria-hidden="true">&#10023;</span>
+            <span>Moules Cap Corse</span>
+            <span class="text-accent" aria-hidden="true">&#10023;</span>
+            <span>Gambas risotto</span>
+            <span class="text-accent" aria-hidden="true">&#10023;</span>
+            <span>Vue citadelle</span>
+            <span class="text-accent" aria-hidden="true">&#10023;</span>
+            <span>Port de Calvi</span>
+            <span class="text-accent" aria-hidden="true">&#10023;</span>
+          </div>
+          <div class="flex items-center gap-10 pr-10 font-display text-[1.4rem] md:text-[1.6rem]" aria-hidden="true">
+            <span>Quai Adolphe Landry</span>
+            <span class="text-accent">&#10023;</span>
+            <span>7j/7 midi et soir</span>
+            <span class="text-accent">&#10023;</span>
+            <span>Moules Cap Corse</span>
+            <span class="text-accent">&#10023;</span>
+            <span>Gambas risotto</span>
+            <span class="text-accent">&#10023;</span>
+            <span>Vue citadelle</span>
+            <span class="text-accent">&#10023;</span>
+            <span>Port de Calvi</span>
+            <span class="text-accent">&#10023;</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Histoire -->
+    <section id="histoire" class="border-b border-line">
+      <div class="max-w-7xl mx-auto px-5 md:px-8 py-20 md:py-28 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+        <div>
+          <p class="eyebrow mb-6" data-reveal>La maison</p>
+          <h2 class="h2 mb-6" data-reveal>
+            La maison, <span class="italic">amarrée</span> au quai.
+          </h2>
+          <p class="mb-5 text-ink" data-reveal>
+            Installé en première ligne du port de Calvi, Le Nautic cultive une cuisine maritime franche : produits de la pêche, fruits de mer, spécialités corses qui disent la Balagne. La salle et la terrasse ouvrent sur les voiliers du Quai Adolphe Landry, la citadelle génoise en toile de fond.
+          </p>
+          <p class="text-ink-2" data-reveal>
+            Ouvert toute l'année, midi et soir, 7j/7. Un restaurant familial qui accueille les voyageurs de passage comme les habitués, pour un déjeuner au soleil ou un dîner au coucher. Privatisations possibles pour vos célébrations.
+          </p>
+        </div>
+        <div class="order-first md:order-last" data-reveal>
+          <div class="histoire-frame aspect-[3/4] overflow-hidden rounded-sm bg-line">
+            <img
+              src="./assets/images/hero-le-nautic.jpg"
+              alt="Vue du restaurant Le Nautic sur le Quai Adolphe Landry"
+              loading="lazy"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Signature -->
+    <section id="signature" class="border-b border-line">
+      <div class="max-w-7xl mx-auto px-5 md:px-8 py-20 md:py-28">
+        <div class="text-center max-w-2xl mx-auto mb-14 md:mb-20">
+          <p class="eyebrow mb-5" data-reveal>Spécialités de la maison</p>
+          <h2 class="h2" data-reveal>Les incontournables.</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <article class="card-signature rounded-2xl overflow-hidden" data-reveal>
+            <div class="aspect-square bg-line">
+              <img src="https://placehold.co/800x800/0E2A44/F5F0E8?text=Moules+Cap+Corse" alt="Moules Cap Corse, spécialité de la maison" loading="lazy" class="w-full h-full object-cover"/>
+            </div>
+            <div class="p-6">
+              <h3 class="h3 mb-2"><span class="italic">Moules</span> Cap Corse</h3>
+              <p class="text-ink-2 text-[0.98rem] mb-4">Marinées à la corse, servies chaudes, parfumées d'herbes du maquis, frites maison en accompagnement.</p>
+              <p class="eyebrow">Spécialité signature</p>
+            </div>
+          </article>
+          <article class="card-signature rounded-2xl overflow-hidden" data-reveal>
+            <div class="aspect-square bg-line">
+              <img src="https://placehold.co/800x800/C4622D/F5F0E8?text=Gambas+risotto" alt="Gambas risotto, signature méditerranéenne" loading="lazy" class="w-full h-full object-cover"/>
+            </div>
+            <div class="p-6">
+              <h3 class="h3 mb-2"><span class="italic">Gambas</span> risotto</h3>
+              <p class="text-ink-2 text-[0.98rem] mb-4">Risotto crémeux au jus de crustacés, gambas snackées à la plancha, zeste de citron de Corse.</p>
+              <p class="eyebrow">Signature méditerranéenne</p>
+            </div>
+          </article>
+          <article class="card-signature rounded-2xl overflow-hidden" data-reveal>
+            <div class="aspect-square bg-line">
+              <img src="https://placehold.co/800x800/5A6B7C/F5F0E8?text=Poissons+grilles" alt="Poissons grillés du jour, pêche locale" loading="lazy" class="w-full h-full object-cover"/>
+            </div>
+            <div class="p-6">
+              <h3 class="h3 mb-2"><span class="italic">Poissons</span> grillés</h3>
+              <p class="text-ink-2 text-[0.98rem] mb-4">Arrivage du jour, cuisson à la plancha, huile d'olive et herbes fraîches, légumes de saison.</p>
+              <p class="eyebrow">Pêche locale</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Galerie -->
+    <section id="galerie" class="border-b border-line">
+      <div class="max-w-7xl mx-auto px-5 md:px-8 py-20 md:py-28">
+        <div class="mb-12 md:mb-16 max-w-xl">
+          <p class="eyebrow mb-5" data-reveal>En images</p>
+          <h2 class="h2" data-reveal>L'expérience.</h2>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+          <figure class="aspect-[4/3] overflow-hidden rounded-2xl bg-line col-span-2 md:col-span-2" data-reveal>
+            <img src="./assets/images/thumbnail-le-nautic.jpg" alt="Terrasse du Nautic en bord de quai" loading="lazy" class="w-full h-full object-cover"/>
+          </figure>
+          <figure class="aspect-[3/4] overflow-hidden rounded-2xl bg-line" data-reveal>
+            <img src="https://placehold.co/900x1200/0E2A44/F5F0E8?text=Ambiance+soir" alt="Ambiance du Nautic au coucher du soleil" loading="lazy" class="w-full h-full object-cover"/>
+          </figure>
+          <figure class="aspect-square overflow-hidden rounded-2xl bg-line" data-reveal>
+            <img src="https://placehold.co/900x900/C4622D/F5F0E8?text=Detail+plat" alt="Détail dressage assiette" loading="lazy" class="w-full h-full object-cover"/>
+          </figure>
+          <figure class="aspect-[4/3] overflow-hidden rounded-2xl bg-line md:col-span-2" data-reveal>
+            <img src="https://placehold.co/1200x900/5A6B7C/F5F0E8?text=Port+de+Calvi" alt="Vue du port de Calvi depuis la terrasse" loading="lazy" class="w-full h-full object-cover"/>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Proof -->
+    <section id="proof" class="bg-line/60">
+      <div class="max-w-7xl mx-auto px-5 md:px-8 py-20 md:py-28 grid grid-cols-1 md:grid-cols-[auto_1fr] gap-12 md:gap-20 items-center">
+        <div data-reveal>
+          <div class="flex items-end gap-3 mb-3">
+            <span class="font-display leading-none" style="font-size: clamp(4rem, 10vw, 7rem);">4.3</span>
+            <div class="flex mb-4" aria-hidden="true">
+              <svg class="star" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7.3L12 17.8 5.7 21.5l1.7-7.3L2 9.5l7.1-.6L12 2z"/></svg>
+              <svg class="star" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7.3L12 17.8 5.7 21.5l1.7-7.3L2 9.5l7.1-.6L12 2z"/></svg>
+              <svg class="star" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7.3L12 17.8 5.7 21.5l1.7-7.3L2 9.5l7.1-.6L12 2z"/></svg>
+              <svg class="star" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7.3L12 17.8 5.7 21.5l1.7-7.3L2 9.5l7.1-.6L12 2z"/></svg>
+              <svg class="star" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7.3L12 17.8 5.7 21.5l1.7-7.3L2 9.5l7.1-.6L12 2z"/></svg>
+            </div>
+          </div>
+          <p class="meta">sur <strong class="text-ink">1042 avis</strong> Google</p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <blockquote class="border-l-2 border-accent pl-5" data-reveal>
+            <p class="font-display italic text-[1.15rem] md:text-[1.3rem] leading-relaxed text-ink mb-3">
+              "Niché en bord de mer, une expérience culinaire exceptionnelle mêlant saveurs authentiques et cadre idyllique."
+            </p>
+            <cite class="meta not-italic">Rankeat.fr</cite>
+          </blockquote>
+          <blockquote class="border-l-2 border-accent pl-5" data-reveal>
+            <p class="font-display italic text-[1.15rem] md:text-[1.3rem] leading-relaxed text-ink mb-3">
+              "Superbe emplacement sur le port. Service au top, personnel attentionné et efficace."
+            </p>
+            <cite class="meta not-italic">Tripadvisor, avis 5 étoiles</cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Infos -->
+    <section id="infos" class="border-b border-line">
+      <div class="max-w-7xl mx-auto px-5 md:px-8 py-20 md:py-28 grid grid-cols-1 md:grid-cols-[55fr_45fr] gap-10 md:gap-16">
+        <div>
+          <p class="eyebrow mb-5" data-reveal>Trouver, réserver</p>
+          <h2 class="h2 mb-8" data-reveal>Venir au Nautic.</h2>
+
+          <div class="mb-8" data-reveal>
+            <h3 class="eyebrow mb-4 text-ink">Horaires</h3>
+            <ul class="divide-y divide-line border-y border-line">
+              <li class="flex items-center justify-between py-3">
+                <span class="text-ink">Du lundi au dimanche</span>
+                <span class="text-ink-2 tabular-nums">12:00 - 14:30</span>
+              </li>
+              <li class="flex items-center justify-between py-3">
+                <span class="text-ink">Tous les soirs</span>
+                <span class="text-ink-2 tabular-nums">18:00 - 23:00</span>
+              </li>
+              <li class="flex items-center justify-between py-3">
+                <span class="text-ink">Ouverture</span>
+                <span class="text-ink-2">7j/7, toute l'année</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mb-8" data-reveal>
+            <h3 class="eyebrow mb-4 text-ink">Adresse</h3>
+            <p class="text-ink">Quai Adolphe Landry<br/>20260 Calvi, Haute-Corse</p>
+          </div>
+
+          <div class="mb-8" data-reveal>
+            <h3 class="eyebrow mb-4 text-ink">Budget indicatif</h3>
+            <p class="text-ink-2">20 à 30 € par personne, selon la formule.</p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-4" data-reveal>
+            <a href="tel:+33495312165" class="btn-primary inline-flex items-center px-6 py-3 rounded-full text-[0.95rem] font-medium">
+              Nous appeler : 04 95 31 21 65
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Le+Nautic+Calvi&query_place_id=ChIJk1CVHnjr0BIResNgVmJPnec" target="_blank" rel="noopener noreferrer" class="btn-ghost inline-flex items-center px-6 py-3 rounded-full text-[0.95rem] font-medium">
+              Itinéraire
+            </a>
+          </div>
+        </div>
+
+        <div data-reveal>
+          <div class="aspect-[4/5] w-full rounded-2xl overflow-hidden border border-line bg-line">
+            <iframe
+              title="Carte, emplacement du Nautic à Calvi"
+              class="maps-iframe"
+              src="https://maps.google.com/maps?q=42.5662178,8.7578077&z=15&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-line">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 pt-16 md:pt-24 pb-10">
+      <div class="mb-10 md:mb-16">
+        <p class="font-display leading-[0.95] text-ink/80" style="font-size: clamp(4rem, 12vw, 9rem);">Le Nautic</p>
+        <p class="eyebrow mt-4">Quai Adolphe Landry, Calvi</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 border-t border-line pt-10">
+        <div>
+          <h3 class="eyebrow mb-3 text-ink">Contact</h3>
+          <p class="text-ink"><a href="tel:+33495312165" class="nav-link">04 95 31 21 65</a></p>
+          <p class="text-ink-2 text-sm mt-2">Réservation par téléphone</p>
+        </div>
+        <div>
+          <h3 class="eyebrow mb-3 text-ink">Adresse</h3>
+          <p class="text-ink">Quai Adolphe Landry<br/>20260 Calvi</p>
+        </div>
+        <div>
+          <h3 class="eyebrow mb-3 text-ink">Horaires</h3>
+          <p class="text-ink-2 text-sm">7j/7, midi et soir<br/>12:00 - 14:30, 18:00 - 23:00</p>
+        </div>
+      </div>
+      <div class="mt-12 pt-6 border-t border-line flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <p class="meta">© 2026 Le Nautic, Calvi. Tous droits réservés.</p>
+        <p class="meta">Site réalisé avec soin par Menghi Computer Science.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { animate, inView, scroll } from 'https://cdn.jsdelivr.net/npm/motion@10.18.0/+esm';
+    import Lenis from 'https://cdn.jsdelivr.net/npm/lenis@1.1.13/+esm';
+
+    // Smooth scroll
+    const lenis = new Lenis({ lerp: 0.08, wheelMultiplier: 1 });
+    function raf(t) { lenis.raf(t); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+
+    // Anchor links via Lenis
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        if (id.length > 1) {
+          const target = document.querySelector(id);
+          if (target) {
+            e.preventDefault();
+            lenis.scrollTo(target, { offset: -60 });
+          }
+        }
+      });
+    });
+
+    // Reveals with stagger on siblings inside same parent
+    const revealed = new WeakSet();
+    inView('[data-reveal]', (info) => {
+      const el = info.target;
+      if (revealed.has(el)) return;
+      revealed.add(el);
+      // Compute stagger index among sibling [data-reveal] of same parent
+      const parent = el.parentElement;
+      const siblings = Array.from(parent.querySelectorAll(':scope > [data-reveal]'));
+      const idx = siblings.indexOf(el);
+      const delay = idx > -1 ? idx * 0.07 : 0;
+      animate(el,
+        { opacity: [0, 1], transform: ['translateY(24px)', 'translateY(0px)'] },
+        { duration: 0.85, delay, easing: [0.22, 0.61, 0.36, 1] }
+      );
+    }, { margin: '0px 0px -10% 0px' });
+
+    // Hero parallax
+    const hero = document.querySelector('#hero-image');
+    if (hero) {
+      scroll(
+        animate(hero, { transform: ['translateY(0px)', 'translateY(-40px)'] }),
+        { target: hero, offset: ['start end', 'end start'] }
+      );
+    }
+
+    // Nav scrolled state
+    const nav = document.querySelector('#top-nav');
+    const onScroll = () => {
+      if (window.scrollY > 24) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Image fade-in on load
+    document.querySelectorAll('img').forEach(img => {
+      if (img.complete) img.classList.add('loaded');
+      else img.addEventListener('load', () => img.classList.add('loaded'), { once: true });
+    });
+  </script>
+</body>
+</html>
