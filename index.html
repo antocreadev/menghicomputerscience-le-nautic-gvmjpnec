@@ -12,27 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        bg: '#F4EFE3',
-        ink: '#0E2A3A',
-        'ink-2': '#5E6B6F',
-        accent: '#C0502A',
-        line: '#D8CFBA',
-      },
-      fontFamily: {
-        display: ['Fraunces', 'serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
-      },
-    },
-  },
-};
-</script>
+<link rel="stylesheet" href="./tailwind.css"/>
 <style>
   :root {
     --bg: #F4EFE3;
@@ -55,7 +35,8 @@ tailwind.config = {
   .dropcap::first-letter { font-family: 'Fraunces', serif; font-weight: 700; font-size: 4.4em; float: left; line-height: 0.85; padding-right: 0.12em; padding-top: 0.06em; color: var(--accent); }
   .gps-bar { backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); background: rgba(244, 239, 227, 0.82); border-bottom: 1px solid var(--line); }
   .map-paper iframe { filter: sepia(0.15) contrast(0.95) saturate(0.9); }
-  [data-reveal] { opacity: 0; transform: translateY(16px); }
+  .js-ready [data-reveal]{opacity:0;transform:translateY(16px);animation:autoreveal .5s ease-out .15s forwards;}
+  @keyframes autoreveal{to{opacity:1;transform:translateY(0)}}
   table.registre { border-collapse: collapse; width: 100%; }
   table.registre th, table.registre td { border: 1px solid var(--line); padding: 0.9rem 1rem; text-align: left; font-size: 0.95rem; }
   table.registre th { font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.72rem; color: var(--ink-2); background: rgba(216,207,186,0.25); font-weight: 500; }
@@ -455,6 +436,7 @@ tailwind.config = {
 </div>
 
 <script type="module">
+document.documentElement.classList.add('js-ready');
   import { animate, inView, scroll } from 'https://cdn.jsdelivr.net/npm/motion@10.18.0/+esm';
   import Lenis from 'https://cdn.jsdelivr.net/npm/lenis@1.1.13/+esm';
 
